@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "fixed_pages",
+  "info": {
+    "singularName": "fixed-page",
+    "pluralName": "fixed-pages",
+    "displayName": "FixedPage"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "content": {
+      "type": "richtext"
+    }
+  }
+}
