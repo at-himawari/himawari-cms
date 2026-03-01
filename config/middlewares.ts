@@ -8,27 +8,19 @@ export default [
         useDefaults: true,
         directives: {
           "connect-src": ["'self'", "https:"],
-          // img-src と media-src に CloudFront と S3 のドメインを追加
           "img-src": [
             "'self'",
             "data:",
             "blob:",
             "dl.airtable.com",
-            // .envのCDN_URLを直接書くか、以下のように展開します
-            process.env.CDN_URL
-              ? process.env.CDN_URL.replace(/^https?:\/\//, "")
-              : "",
-            `${process.env.AWS_BUCKET}.s3.${process.env.AWS_REGION}.amazonaws.com`,
+            "dq7c5b6uxkdk2.cloudfront.net", // ← CloudFrontのドメインを直接書く
           ],
           "media-src": [
             "'self'",
             "data:",
             "blob:",
             "dl.airtable.com",
-            process.env.CDN_URL
-              ? process.env.CDN_URL.replace(/^https?:\/\//, "")
-              : "",
-            `${process.env.AWS_BUCKET}.s3.${process.env.AWS_REGION}.amazonaws.com`,
+            "dq7c5b6uxkdk2.cloudfront.net", // ← ここも直接書く
           ],
           upgradeInsecureRequests: null,
         },
