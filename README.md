@@ -59,3 +59,32 @@ Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/
 ---
 
 <sub>🤫 Psst! [Strapi is hiring](https://strapi.io/careers).</sub>
+
+## Cloud Run デプロイ手順
+
+- Artifact Registry に Push
+
+```
+gcloud artifacts repositories create strapi \
+  --repository-format=docker \
+  --location=asia-northeast1
+
+```
+
+- ビルド
+
+```
+gcloud builds submit \
+  --tag asia-northeast1-docker.pkg.dev/PROJECT_ID/strapi/app
+
+```
+
+- Cloud Runにデプロイ
+
+```
+gcloud run deploy strapi \
+  --image asia-northeast1-docker.pkg.dev/PROJECT_ID/strapi/app \
+  --region asia-northeast1 \
+  --platform managed \
+  --allow-unauthenticated
+```
