@@ -7,7 +7,7 @@ RUN npm ci --omit=dev
 
 COPY . .
 
-COPY rds-ca.pem /etc/ssl/certs/rds-ca.pem
+COPY ca-key.pem /etc/ssl/certs/ca-key.pem
 
 RUN npm run build
 
